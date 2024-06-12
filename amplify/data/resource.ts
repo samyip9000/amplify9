@@ -10,7 +10,7 @@ const schema = a.schema({
   Todo: a
     .model({
       account: a.string(), 
-      content: a.string(),
+      description: a.string(),
       amount: a.float(), 
       sign: a.integer(), 
 

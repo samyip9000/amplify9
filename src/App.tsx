@@ -14,16 +14,16 @@ function App() {
   }, []);
 
   function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
+    client.models.Todo.create({ description: window.prompt("Todo content") });
   }
 
   async function updateTodo(id: string) {
     const todo = {
       id: id,
-      content: window.prompt("Change content") ,
+      content: window.prompt("Change content"),
     };
 
-   client.models.Todo.update(todo);
+    client.models.Todo.update(todo);
   }
 
   return (
@@ -33,8 +33,27 @@ function App() {
       <ul>
         {todos.map((anywhat) => (
           <>
-            <li key={anywhat.id}>{anywhat.content}</li>
-            <button onClick={() => updateTodo(anywhat.id)}>change content </button>
+            <li key={anywhat.id} onClick={() => updateTodo(anywhat.id)}>
+              {anywhat.description}
+              {anywhat.account}
+              {anywhat.amount}
+              {anywhat.sign}
+            </li>
+
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+            </table>
+            {/* <button onClick={() => updateTodo(anywhat.id)}>
+              change content{" "}
+            </button> */}
           </>
         ))}
       </ul>
