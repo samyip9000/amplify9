@@ -20,7 +20,7 @@ function App() {
   async function updateTodo(id: string) {
     const todo = {
       id: id,
-      content: window.prompt("Change content"),
+      description: window.prompt("Change content"),
     };
 
     client.models.Todo.update(todo);
