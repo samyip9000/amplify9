@@ -5,16 +5,16 @@ import { generateClient } from "aws-amplify/data";
 const client = generateClient<Schema>();
 
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
+  const [todos, setTodos] = useState<Array<Schema["Journal"]["type"]>>([]);
 
   useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
+    client.models.Journal.observeQuery().subscribe({
       next: (data) => setTodos([...data.items]),
     });
   }, []);
 
   function createTodo() {
-    client.models.Todo.create({ description: window.prompt("Todo content") });
+    client.models.Journal.create({ description: window.prompt("Todo content") });
   }
 
   async function updateTodo(id: string) {
@@ -23,7 +23,7 @@ function App() {
       description: window.prompt("Change content"),
     };
 
-    client.models.Todo.update(todo);
+    client.models.Journal.update(todo);
   }
 
   return (
@@ -40,20 +40,29 @@ function App() {
               {anywhat.sign}
             </li>
 
-            <table>
+            <tbody>
               <thead>
                 <tr>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
+                  <th>number</th>
+                  <th>date</th>
+                  <th>account</th>
+                  <th>description</th>
+                  <th>amount</th>
+                  <th>sign</th>
                 </tr>
               </thead>
-            </table>
-            {/* <button onClick={() => updateTodo(anywhat.id)}>
-              change content{" "}
-            </button> */}
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </tbody>
           </>
         ))}
       </ul>
