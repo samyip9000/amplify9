@@ -10,7 +10,7 @@ const schema = a.schema({
   Journal: a
     .model({
       journalNumber: a.string(), //autogenerate and not allow user to change.
-      date: a.date(),
+      date: a.string(),
       account: a.string(), 
       description: a.string(),
       amount: a.float(), 
